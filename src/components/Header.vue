@@ -7,16 +7,11 @@
         <router-link to="/profile" class="navbar-brand" tag="a">Home Page</router-link>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-             <router-link v-for="item in menuItems" :to="item.link">
+            <ul class="navbar-nav ml-auto">
+             <router-link v-for="item in menuItems" :to="item.link" class="nav-item" :key="item.title">
                  <a class="nav-link" href="#">{{item.title}}</a>
-             </router-link>   
-            
+             </router-link>               
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div> 
     </div>
   
@@ -28,7 +23,7 @@ export default {
         menuItems(){
             var menuItems = [
                 {title: 'Signin', link: '/signin'},
-                {title: 'Signip', link: '/signup'}
+                {title: 'Signup', link: '/signup'}
             ]
             return menuItems;
         }       
