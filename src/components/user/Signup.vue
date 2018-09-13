@@ -93,7 +93,16 @@ export default {
         onSubmitSignup () {
             if (this.password == this.confirmPassword && !this.emailStatus 
             && !this.passwordStatus && !this.confirmPasswordStatus){
-                this.$store.dispatch('onSubmitSignup', {email: this.email, name: this.name, password: this.password})
+                console.log(this.password)
+                console.log(this.email)
+                console.log(this.name)
+
+                this.$store.dispatch('onSubmitSignup', {account:this.name, password:this.password, domainName:"zioo.etu.im", mail:this.email})
+                .then((result) => {
+                    this.$router.push({path: '/'})
+                }).catch((err) => {
+                    this.$router.push({path: '/signin'})
+                })
             }       
         }
     }
