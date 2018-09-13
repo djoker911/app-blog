@@ -46,14 +46,24 @@ module.exports = {
     extensions: ['*', '.js', '.vue', '.json']
   },
   devServer: {
+    port:8081,
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+    proxy: {
+      '/api/**': {
+        target: 'http://localhost:8080',
+        secure: false,
+        changeOrigin: true,
+      }
+    },
   },
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  
+  
 }
 
 if (process.env.NODE_ENV === 'production') {
