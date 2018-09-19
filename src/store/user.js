@@ -70,16 +70,17 @@ export default {
             })
         },
         checkToken({commit}) {
-            return new Promise((resolve, reject) =>{
-                var token = window.localStorage.getItem('token')
-                axios.get('/api/v1/page-authentication',{withCredentials: true})
-                .then((response) => {
-                    resolve()
-                }).catch(() => {
-                    window.localStorage.removeItem('token')
-                    reject()
+                return new Promise((resolve, reject) =>{
+                    var token = window.localStorage.getItem('token')
+                    axios.get('/api/v1/page-authentication',{withCredentials: true})
+                    .then((response) => {
+                        resolve()
+                    }).catch(() => {
+                        window.localStorage.removeItem('token')
+                        reject()
+                    })
                 })
-            })
+                    
         },
         onUserLogout({commit}) {
             let token = window.localStorage.getItem('token')

@@ -13,7 +13,9 @@ export default {
     
     },
     actions: {
-    
+        getPosts({commit}) {
+            axios.get()
+        }
     },
     getters: {
 

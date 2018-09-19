@@ -7,6 +7,7 @@ import Profile from '../components/user/Profile.vue'
 import PostsList from '../components/posts/PostsList.vue'
 import Post from '../components/posts/Post.vue'
 import CreatePost from '../components/posts/CreatePost.vue'
+import Home from '../components/Home.vue'
 
 Vue.use(Router)
 
@@ -14,14 +15,15 @@ export default new Router({
     routes: [
        { path: '/signup', name: 'signup', component: Signup},
        { path: '/signin', name: 'signin', component: Signin},
+       { path: '/', name: 'home', component: Home, meta: {requiresAuth: true}},
        { path: '/profile', name: 'profile', component: Profile, meta: {requiresAuth: true}},
-       { path: '/', name: 'postsList', component: PostsList,
+       { path: '/postsList', name: 'postsList', component: PostsList,
             children: [
                 { path: 'post', component: Post, meta: {requiresAuth: true}}
-            ]
-        },
+            ],
+            meta: {requiresAuth: true}},
         { path: '/createpost',name: 'createPost', component: CreatePost, meta: {requiresAuth: true}},
-        { path: '/*', redirect:'/profile'}
+        { path: '/*', redirect:'/signin'}
     ],
     mode: 'history'
 })
