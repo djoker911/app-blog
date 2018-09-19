@@ -71,10 +71,25 @@ export default {
                     reject()
                 })
             })
+        },
+        onUserLogout({commit}) {
+            let token = window.localStorage.getItem('token')
+            return new Promise((resolve, reject) => {
+                axios.get('/api/v1/logout')
+                .then((response) => {
+                    window.localStorage.removeItem('token')
+                    commit('setUser', null)
+                    resolve()
+                }).catch(() => {
+                    reject();
+                })
+            })
         }
      },
     getters: {
-        
+        getUser(state) {
+            return state.user
+        }
     },
     modules: {
     }

@@ -12,6 +12,9 @@
                  <a class="nav-link" href="#">{{item.title}}</a>
              </router-link>               
             </ul>
+            <form class="form-inline" v-if="userIsAuthenticed">
+                <button type="button" name="button" class="btn btn-outline-success" @click="onLogout">Logout</button>
+            </form>
         </div> 
     </div>
   
@@ -21,13 +24,35 @@
 export default {
     computed: {
         menuItems(){
-            var menuItems = [
-                {title: 'Signin', link: '/signin'},
-                {title: 'Signup', link: '/signup'}
-            ]
+            var menuItems;
+            if(this.userIsAuthenticed) {
+                menuItems = [
+                    {title: 'Profile', link: '/profile'},
+                    {title: 'New Post', link: '/createPost'}
+                ]
+            }else{
+                menuItems = [
+                    {title: 'Signin', link: '/signin'},
+                    {title: 'Signup', link: '/signup'}
+                ]
+            }
+            
             return menuItems;
+        },
+        userIsAuthenticed() {
+            console.log(this.$store.getters.getUser)
+            return this.$store.getters.getUser !== null && this.$store.getters.getUser !== undefined
         }       
-    }    
+    },
+    methods: {
+        onLogout() {
+            this.$store.dispatch('onUserLogout').then(() => {
+                this.$router.push('/signin')
+            }).catch(() => {
+                this.$router.push('/')
+            })
+        }
+    }  
 }
 </script>
 <style lang="css">

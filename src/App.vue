@@ -13,7 +13,7 @@ export default {
   },
   created () {
     this.$store.dispatch('checkToken').then(() =>{
-      this.$router.push('/profile')
+      // this.$router.push('/profile')
     })
   }
 }
