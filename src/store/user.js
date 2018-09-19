@@ -6,11 +6,19 @@ axios.defaults.withCredentials = true;
 export default {
     state: {
         user: null,
+        role: null,
+        group: null,
         loading: false
      },
      mutations: {
         setUser (state, payload) {
             state.user = payload
+        },
+        setRole (state, payload) {
+            state.role = payload
+        },
+        setGroup (state, payload) {
+            state.group = payload
         },
         setLoading (state, payload) {
             state.loading = payload
@@ -49,8 +57,10 @@ export default {
                     console.log('lalalalal')
                     console.log(response)
                     console.log(response.data.data)
-                    window.localStorage.setItem('token', response.data.data)
-                    commit('setUser', response.data)
+                    window.localStorage.setItem('token', response.data.data.token)
+                    commit('setUser', response.data.data.currentUser)
+                    commit('setGroup', response.data.data.currentUserGroup)
+                    commit('setRole', response.data.data.currentRole)
                     commit('setLoading', false)
                     resolve()
                 }).catch(() =>{
@@ -64,7 +74,6 @@ export default {
                 var token = window.localStorage.getItem('token')
                 axios.get('/api/v1/page-authentication',{withCredentials: true})
                 .then((response) => {
-                    commit('setUser', response.data)
                     resolve()
                 }).catch(() => {
                     window.localStorage.removeItem('token')

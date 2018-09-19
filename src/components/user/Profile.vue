@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="container">
         <h1>Profile</h1>
-        <h3>ID: {{$store.state.user.user.data}}</h3>
+        <h3>ID: {{user}}</h3>
     </div>
     
 
