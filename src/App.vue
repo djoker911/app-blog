@@ -10,6 +10,11 @@ import Header from './components/Header.vue'
 export default {
   components: {
     appHeader: Header
+  },
+  created () {
+    this.$store.dispatch('checkToken').then(() =>{
+      this.$router.push('/profile')
+    })
   }
 }
 </script>

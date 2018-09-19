@@ -11,7 +11,7 @@ export default new Router({
     routes: [
        { path: '/signup', name: 'signup', component: Signup},
        { path: '/signin', name: 'signin', component: Signin},
-       { path: '/profile', name: 'profile', component: Profile},
+       { path: '/profile', name: 'profile', component: Profile, meta: {requiresAuth: true}},
        { path: '/*', redirect:'/profile'}
     ],
     mode: 'history'

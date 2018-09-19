@@ -46,6 +46,7 @@ export default {
         return {
             email: '',
             password: '',
+            passwordStatus:'',
             confirmPassword: '',
             name: '',
             emailStatus: null
