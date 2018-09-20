@@ -1,7 +1,10 @@
 <template>
-    <h1>
-        {{post.id}},{{post.domainName}}, {{timeStamp}}
-    </h1>
+    <a class="weeeee" @click="onClicked">
+        <div>
+            {{post.id}},{{post.domainName}}, {{timeStamp}}
+        </div>
+    </a>
+    
     
 </template>
 <script>
@@ -12,6 +15,11 @@ export default {
     computed: {
         timeStamp() {
             return moment(this.post.cTime).format('YYYY/MM/DD hh:mm:ss');
+        }
+    },
+    methods: {
+        onClicked () {
+            this.$emit('onClickedItem', this.post.id)
         }
     }
 }    
