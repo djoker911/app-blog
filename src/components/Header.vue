@@ -28,7 +28,7 @@ export default {
             if(this.userIsAuthenticed) {
                 menuItems = [
                     {title: 'Profile', link: '/profile'},
-                    {title: 'New Post', link: '/createPost'}
+                    {title: 'Posts', link: '/postsList'}
                 ]
             }else{
                 menuItems = [

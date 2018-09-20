@@ -17,12 +17,8 @@ export default new Router({
        { path: '/signin', name: 'signin', component: Signin},
        { path: '/', name: 'home', component: Home, meta: {requiresAuth: true}},
        { path: '/profile', name: 'profile', component: Profile, meta: {requiresAuth: true}},
-       { path: '/postsList', name: 'postsList', component: PostsList,
-            children: [
-                { path: 'post', component: Post, meta: {requiresAuth: true}}
-            ],
-            meta: {requiresAuth: true}},
-        { path: '/createpost',name: 'createPost', component: CreatePost, meta: {requiresAuth: true}},
+       { path: '/postsList', name: 'postsList', component: PostsList,meta: {requiresAuth: true}},
+        { path: '/createPost',name: 'createPost', component: CreatePost, meta: {requiresAuth: true}},
         { path: '/*', redirect:'/signin'}
     ],
     mode: 'history'

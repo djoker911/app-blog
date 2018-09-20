@@ -12,9 +12,7 @@ export default {
     appHeader: Header
   },
   created () {
-    this.$store.dispatch('checkToken').then(() =>{
-      // this.$router.push('/profile')
-    })
+    this.$store.dispatch('checkToken')
   }
 }
 </script>
