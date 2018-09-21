@@ -3,7 +3,7 @@
         <h1>PostsList</h1>
         <div class="control-btn">
             <button name="add">ADD</button>
-            <button name="delete">DELETE</button>
+            <button name="delete" @click="loopDelete">DELETE</button>
             <button name="copy">COPY</button>
         </div>
          <div class="divTable">
@@ -65,6 +65,20 @@
                 } else {
                     console.log('index is '+this.checkboxValue.indexOf(value))
                     this.checkboxValue.splice(this.checkboxValue.indexOf(value), 1)
+                }
+            },
+            loopDelete() {
+                console.log('deleting...')
+                console.log(this.$store.state.post.posts)
+                while (this.checkboxValue.length > 0) {
+                    let deleteId = this.checkboxValue.pop()
+                    console.log(deleteId + " is deleted")
+                    this.$store.dispatch('deletePost', {group:this.user.group, domainInfoId:deleteId})
+                    .then(() =>{
+                        console.log('done')
+                    }).catch(() => {
+                        console.log('fuck something wrong')
+                    })
                 }
             }
         }

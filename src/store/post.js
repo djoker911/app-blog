@@ -13,6 +13,9 @@ export default {
     mutations: {
         setPosts(state, payload) {
             state.posts = payload
+        },
+        removePost(state, payload) {
+            state.posts = state.posts.filter(post => post.id != payload.domainInfoId)
         }
     },
     actions: {
@@ -28,6 +31,17 @@ export default {
                     console.log(response.data)
                     commit('setPosts', response.data.data)
                 })
+            })
+            
+        },
+        deletePost({commit}, payload) {
+            console.log('in deletePost')
+            console.log(payload.group)
+            axios.delete('/api/v1/domain/group/'+payload.group+'/id/'+payload.domainInfoId)
+            .then((response) => {
+                commit('removePost', payload)
+            }).catch(()=>{
+                console.log('something wrong when delete')
             })
             
         }
