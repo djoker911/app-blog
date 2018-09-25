@@ -26,7 +26,8 @@ export default {
     },
     methods: {
         onClicked () {
-            this.$emit('onClickedItem', this.post.id)
+            // this.$emit('onClickedItem', this.post.id)
+            this.$router.push('/editPost/'+this.post.id)
         },
         onChange(val) {
             console.log(val.id);

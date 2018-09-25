@@ -56,7 +56,20 @@ export default {
                     reject()
                 })
             })
+        },
+        editPost({commit},payload) {
+            console.log(payload)
+            return new Promise((resolve, reject)=>{
+                axios.put('/api/v1/domain', payload)
+                .then((response) => {
+                    console.log('edit done in createPost')
+                    resolve()
+                }).catch(() =>{
+                    reject()
+                })
+            })
         }
+
         
     },
     
