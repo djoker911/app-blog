@@ -44,6 +44,18 @@ export default {
                 console.log('something wrong when delete')
             })
             
+        },
+        createPost({commit},payload) {
+            console.log(payload)
+            return new Promise((resolve, reject)=>{
+                axios.post('/api/v1/domain', payload)
+                .then((response) => {
+                    console.log('create done in createPost')
+                    resolve()
+                }).catch(() =>{
+                    reject()
+                })
+            })
         }
         
     },

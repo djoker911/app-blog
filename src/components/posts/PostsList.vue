@@ -2,7 +2,9 @@
     <div class="container">
         <h1>PostsList</h1>
         <div class="control-btn">
-            <button name="add">ADD</button>
+            <button name="add">                
+                <router-link to="/createPost" tag="a">ADD</router-link>
+            </button>
             <button name="delete" @click="loopDelete">DELETE</button>
             <button name="copy">COPY</button>
         </div>
@@ -30,7 +32,7 @@
 </template>
 
 <script>
-    import { mapState } from 'vuex'
+   import { mapState } from 'vuex'
 
    import ListItem from './ListItem.vue'
    export default{
@@ -82,9 +84,6 @@
                 }
             }
         }
-
-       
-
 
    } 
 </script>
